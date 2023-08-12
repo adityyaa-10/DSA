@@ -14,11 +14,12 @@ int BinarySearch(int arr[], int size, int key)
     {
         if (key == arr[mid])
             return mid;
-        else if (key < mid)
+
+        if (key < arr[mid])
         {
             end = mid - 1;
         }
-        else if (key > mid)
+        else
         {
             start = mid + 1;
         }
