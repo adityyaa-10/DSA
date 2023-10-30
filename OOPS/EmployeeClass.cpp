@@ -19,7 +19,23 @@ public:
         else
             return 0.2 * salary;
     }
-
+    double incomeTaxCalc(double salary, int perks)
+    {
+        if (salary < 300000 && perks < 10000)
+            return 0;
+        else if (salary >= 300001 && salary < 600000 && perks < 10000)
+            return 0.05 * salary;
+        else if (salary >= 600000 && salary < 900000 && perks < 10000)
+            return 0.1 * salary;
+        else if (salary >= 300001 && salary < 600000 && perks >= 10000)
+            return 0.05 * salary + 0.02 * perks;
+        else if (salary >= 600000 && salary < 900000 && perks >= 10000)
+            return 0.1 * salary + 0.02 * perks;
+        else if (salary >= 900000 && perks >= 10000)
+            return 0.2 * salary + 0.02 * perks;
+        else
+            return 0.25 * salary;
+    }
     void getdate(int date, int month, int year)
     {
         cout << "Date of joining --> " << date << "/" << month << "/" << year << endl;
