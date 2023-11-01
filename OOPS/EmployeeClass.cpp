@@ -36,32 +36,24 @@ public:
         else
             return 0.25 * salary;
     }
-    void getdate(int date, int month, int year)
-    {
-        cout << "Date of joining --> " << date << "/" << month << "/" << year << endl;
-    }
 };
 
 int main()
 {
     Employee E1;
-    int date, month, year;
+    int perks;
     double employeeSalary;
     cout << "Enter Employee's name --> ";
     cin >> E1.name;
     cout << "Enter Employee's id --> ";
     cin >> E1.employeeId;
-
-    cout << "Enter Date of joining (DD MM YYYY space separated)" << endl;
-    cin >> date >> month >> year;
-
     cout << "Name of Employee --> " << E1.name << endl;
     cout << "Employee ID --> " << E1.employeeId << endl;
-
-    E1.getdate(date, month, year);
-
     cout << "Enter Salary of Employee " << endl;
     cin >> employeeSalary;
-    cout << "Income Tax to be paid by Employee --> " << E1.incomeTaxCalc(employeeSalary) << endl;
+    cout << "Enter Perks of Employee " << endl;
+    cin >> perks;
+    cout << "Income Tax to be paid by Employee --> " << E1.incomeTaxCalc(employeeSalary, perks) << endl;
+
     return 0;
 }
