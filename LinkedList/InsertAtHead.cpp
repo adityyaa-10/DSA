@@ -1,55 +1,48 @@
 #include <iostream>
 using namespace std;
 
-class Node
+class LinkedListNode
 {
 public:
     int data;
-    Node *next;
+    LinkedListNode *next;
 
-    // Creating a constructor
-    Node(int data)
+    // Create constructor
+    LinkedListNode(int data)
     {
         this->data = data;
         this->next = NULL;
     }
 };
 
-void insertAtHead(Node *&head, int data)
+void insertAtHead(LinkedListNode *&head, int d)
 {
-    Node *temp = new Node(data);
+    LinkedListNode *temp = new LinkedListNode(d);
     temp->next = head;
     head = temp;
 }
 
-void print(Node *&head)
+void print(LinkedListNode *&head)
 {
-    Node *temp = head;
+    LinkedListNode *iterator = head;
 
-    while (temp != NULL)
+    while (iterator != NULL)
     {
-        cout << temp->data << " ";
-        temp = temp->next;
+        cout << iterator->data << " ";
+        iterator = iterator->next;
     }
     cout << endl;
 }
 
 int main()
 {
-    // Creating new node
-    Node *node1 = new Node(10);
+    LinkedListNode *node1 = new LinkedListNode(10);
+    LinkedListNode *head = node1;
 
-    // cout << node1->data << endl;
-    // cout << node1->next << endl;
-
-    // Creating a head pointer
-    Node *head = node1;
+    insertAtHead(head, 20);
+    insertAtHead(head, 30);
 
     print(head);
 
-    // Inserting new node
-    insertAtHead(head, 15);
-
-    print(head);
     return 0;
 }
