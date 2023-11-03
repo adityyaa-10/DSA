@@ -1,44 +1,27 @@
 #include <iostream>
 using namespace std;
 
-class Hero
+class student
 {
 private:
-    int health;
+    int rollNumber;
 
 public:
-    char level;
-
-    int getHealth()
+    int getRollNumber()
     {
-        return health;
+        return rollNumber;
     }
 
-    char getLevel()
+    void setRollNumber(int rollNumber)
     {
-        return level;
-    }
-
-    void setHealth(int h)
-    {
-        health = h;
-    }
-
-    void setLevel(char c)
-    {
-        level = c;
+        this->rollNumber = rollNumber;
     }
 };
 
 int main()
 {
-    Hero x;
-
-    x.setHealth(99);
-    x.level = 'A'; // It is correct in case of public members;
-    // x.setLevel('A'); It is also correct
-
-    cout << "Health of x is --> " << x.getHealth() << endl;
-    cout << "Level of x is --> " << x.level << endl;
-    // cout << "Level of x is --> " << x.getLevel() << endl; --> It is also correct because level is a public member of class hero
+    student s1;
+    s1.setRollNumber(1);
+    cout << s1.getRollNumber() << endl;
+    return 0;
 }
