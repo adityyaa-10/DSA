@@ -1,12 +1,14 @@
 #include <iostream>
 using namespace std;
 
+// Creating a link list node;
 class Node
 {
 public:
     int data;
-    Node *next;
+    Node *next; // A pointer of type Node with name next;
 
+    // Creating constructor
     Node(int data)
     {
         this->data = data;
@@ -30,29 +32,33 @@ void insertAtTail(Node *&tail, int data)
 
 void insertAtMiddle(Node *&head, Node *&tail, int position, int data)
 {
+    // If first position
     if (position == 1)
     {
         insertAtHead(head, data);
-        return;
     }
-
-    Node *temp = head; // Creating a temporary node for traversal till position -1
+    Node *temp = head; // Temporary node to iterate till position
     int count = 1;
 
+    // Iterating till position-1
     while (count < position - 1)
     {
         temp = temp->next;
         count++;
     }
-
     Node *newNode = new Node(data);
+
+    // Checking if the position is the last node itself
     if (temp->next == NULL)
     {
         insertAtTail(tail, data);
         return;
     }
-    newNode->next = temp->next;
-    temp->next = newNode;
+    else // Insert at middle;
+    {
+        newNode->next = temp->next;
+        temp->next = newNode;
+    }
 }
 
 void printList(Node *&head)
@@ -74,10 +80,9 @@ int main()
     Node *tail = node1;
 
     insertAtHead(head, 20);
-    insertAtTail(tail, 50);
-    insertAtMiddle(head, tail, 2, 30);
-    insertAtMiddle(head, tail, 3, 40);
-    insertAtMiddle(head, tail, 6, 60);
-
+    insertAtTail(tail, 30);
+    insertAtMiddle(head, tail, 2, 40);
     printList(head);
+
+    return 0;
 }
