@@ -57,6 +57,12 @@ void insertNode(Node *&tail, int element, int data)
 
 void printList(Node *&tail)
 {
+    if (tail == NULL)
+    {
+        cout << "List is empty" << endl;
+        return;
+    }
+
     Node *temp = tail;
     do
     {
@@ -66,11 +72,50 @@ void printList(Node *&tail)
     cout << endl;
 }
 
+void deleteNode(Node *&tail, int value)
+{
+    if (tail == NULL)
+    {
+        cout << "List is empty" << endl;
+        return;
+    }
+
+    else
+    {
+        Node *prev = tail;
+        Node *curr = prev->next;
+
+        while (curr->data != value)
+        {
+            prev = prev->next;
+            curr = curr->next;
+        }
+
+        // For list with single element
+        if (curr == prev)
+        {
+            tail = NULL;
+        }
+
+        // For list of size >= 2
+        else if (tail == curr)
+        {
+            tail = prev;
+        }
+
+        prev->next = curr->next;
+        curr->next = NULL;
+        delete curr;
+    }
+}
+
 int main()
 {
     Node *tail = NULL;
 
     insertNode(tail, 0, 5);
     insertNode(tail, 5, 6);
+    deleteNode(tail, 5);
+    deleteNode(tail, 6);
     printList(tail);
 }
